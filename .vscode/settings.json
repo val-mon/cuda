@@ -1,0 +1,4 @@
+{
+    // clangd provides code completion and errors, the Microsoft C/C++ one would conflict with it
+    "C_Cpp.intelliSenseEngine": "disabled"
+}

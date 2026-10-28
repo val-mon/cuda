@@ -1,0 +1,15 @@
+CompileFlags:
+  Add:
+    # clang defaults to sm_35, which recent CUDA toolkits no longer support.
+    # Skip the toolkit/arch version check so the same config works on every machine.
+    - --no-cuda-version-check
+    - -Wno-unknown-cuda-version
+
+InlayHints:
+  Enabled: true
+  Designators: true
+  ParameterNames: true
+  DeducedTypes: true
+  DefaultArguments: false
+  TypeNameLimit: 24
+  BlockEnd: false

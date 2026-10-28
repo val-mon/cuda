@@ -1,0 +1,8 @@
+{
+    // Extensions VS Code proposes to install when opening this folder
+    "recommendations": [
+        "ms-vscode-remote.remote-ssh",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "nvidia.nsight-vscode-edition"
+    ]
+}
