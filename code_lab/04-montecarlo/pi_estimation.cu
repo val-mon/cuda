@@ -14,10 +14,10 @@ const int N_BLOCKS = ceil((double)(N) / N_THREADS);
 
 using namespace std;
 
-__global__ void compute_distance(int *m, int n)
+__global__ void compute_distance(int *m)
 {
    int i = blockIdx.x * blockDim.x + threadIdx.x;
-   if (i < n)
+   if (i < N)
    {
       curandState state;
       curand_init(1234ULL, i, 0ULL, &state);
@@ -43,7 +43,7 @@ int main()
    size_t size = sizeof(int);
    CHECK_ERROR(cudaMalloc((void **)&d_m, size));
    CHECK_ERROR(cudaMemcpy(d_m, h_m, size, cudaMemcpyHostToDevice);)
-   compute_distance<<<N_BLOCKS, N_THREADS>>>(d_m, N);
+   compute_distance<<<N_BLOCKS, N_THREADS>>>(d_m);
    CHECK_ERROR(cudaGetLastError());
    CHECK_ERROR(cudaMemcpy(h_m, d_m, size, cudaMemcpyDeviceToHost));
    CHECK_ERROR(cudaFree(d_m));
