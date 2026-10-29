@@ -11,6 +11,9 @@ convert -resize 960x540 mario.png mario.ppm
 Complete command for getting the output
 
 ```bash
-nvcc px2Gray.cu -o px2gray && ./px2gray mario.ppm && convert output.ppm output.png 
+nvcc px2Gray.cu -o px2gray && ./px2gray images/mario.ppm && convert output.ppm output.png
 ```
 
+```bash
+rm output.* px2gray
+```
