@@ -43,9 +43,13 @@ int main()
    size_t size = sizeof(int);
    CHECK_ERROR(cudaMalloc((void **)&d_m, size));
    CHECK_ERROR(cudaMemcpy(d_m, h_m, size, cudaMemcpyHostToDevice);)
-   compute_distance<<<N_BLOCKS, N_THREADS>>>(d_m);
-   CHECK_ERROR(cudaGetLastError());
-   CHECK_ERROR(cudaMemcpy(h_m, d_m, size, cudaMemcpyDeviceToHost));
+
+   MEASURE_TIME_MS(
+      (compute_distance<<<N_BLOCKS, N_THREADS>>>(d_m));
+      CHECK_ERROR(cudaGetLastError());
+      CHECK_ERROR(cudaMemcpy(h_m, d_m, size, cudaMemcpyDeviceToHost));
+   );
+
    CHECK_ERROR(cudaFree(d_m));
 
    float pi = 4.0f * m / N;
